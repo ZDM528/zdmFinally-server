@@ -1,6 +1,9 @@
 import express from "express";
 import { createConnection } from "mysql";
-import user from './user';
+import user from './backend/user';
+import login from './frontend/login'
+import register from './frontend/register'
+import wareHouse from './frontend/wareHouse'
 import upload from './upload';
 
 const app = express();
@@ -23,7 +26,11 @@ app.listen(port, function () {
 })
 
 app.use(user);
+app.use(login);
+app.use(register);
+app.use(wareHouse)
 app.use(upload);
+
 app.use(function (req, res) {
     res.send('404 not found');
 })
