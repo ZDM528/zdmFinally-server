@@ -8,13 +8,20 @@ router.post('/login', (req, res) => {
     connection.query(sql, (err, data) => {
         const resData = JSON.parse(JSON.stringify(data));
         const { username, password } = req.body;
-        resData.some(item => {
-            if (item.username === username && item.password === password) {
-                res.send({ code: 200, messgae: '登录成功' });
+        let dataItem;
+        let result = resData.some(item => {
+            if (item.username == username && item.password == password) {
+                dataItem = item;
+                return true;
             } else {
-                res.send({ code: 403, messgae: '该用户不存在' });
+                return false;
             }
         })
+        if (result) {
+            res.send({ code: 200, messgae: '登录成功', data: dataItem });
+        } else {
+            res.send({ code: 403, messgae: '用户名或者密码不对' });
+        }
     })
 })
 
