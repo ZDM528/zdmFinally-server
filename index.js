@@ -5,6 +5,7 @@ import login from './frontend/login'
 import register from './frontend/register'
 import wareHouse from './frontend/wareHouse'
 import upload from './upload';
+import beVip from './frontend/beVip'
 
 const app = express();
 const cors = require('cors');
@@ -28,6 +29,7 @@ app.listen(port, function () {
 app.use(user);
 app.use(login);
 app.use(register);
+app.use(beVip)
 app.use(wareHouse)
 app.use(upload);
 

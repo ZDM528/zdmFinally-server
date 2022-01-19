@@ -6,13 +6,27 @@ import fs from 'fs';
 let router = express.Router();
 
 router.get('/getWareList', (req, res) => {
-    let sql = "select * from frontendUser";
+    let sql = "select * from datalist";
     connection.query(sql, (err, data) => {
         const resData = JSON.parse(JSON.stringify(data));
-        let res1 = resData.some(item => {
-            return item.way === req.query.way && item.type === req.query.type
-        })
-        res.send(res1);
+        let result = [];
+        if (req.query.access === '不限' && req.query.dataSort === "不限") {
+            result = resData
+        } else if (req.query.dataSort === "不限") {
+            result = resData.filter(item => {
+                return item.access === req.query.access
+            })
+        } else if (req.query.access === '不限') {
+            result = resData.filter(item => {
+                return item.dataSort === req.query.dataSort
+            })
+        } else {
+            result = resData.filter(item => {
+                return item.dataSort === req.query.dataSort && item.access === req.query.access
+            })
+        }
+        console.log(result);
+        res.send({ data: result });
     })
 })
 
