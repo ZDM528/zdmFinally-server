@@ -4,7 +4,8 @@ import user from './backend/user';
 import login from './frontend/login'
 import register from './frontend/register'
 import wareHouse from './frontend/wareHouse'
-import upload from './upload';
+import upload from './upload'
+import beVip from './frontend/beVip'
 
 const app = express();
 const cors = require('cors');
@@ -12,7 +13,7 @@ const port = 8888;
 const connection = createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '123456',
     database: 'zdmBlog'
 })
 connection.connect();
@@ -30,6 +31,7 @@ app.use(login);
 app.use(register);
 app.use(wareHouse)
 app.use(upload);
+app.use(beVip);
 
 app.use(function (req, res) {
     res.send('404 not found');
