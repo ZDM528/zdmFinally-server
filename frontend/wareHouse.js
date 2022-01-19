@@ -41,4 +41,16 @@ router.get('/downloadData', (req, res) => {
         })
     })
 })
+
+router.post('/updateScore', (req, res) => {
+    const { id, username, score } = req.body;
+    let sql = `update frontendUser set score='${score}' where id=${id}`;
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send({ code: 200, message: '更新积分成功' });
+        } else {
+            res.send({ code: 403, message: '更新积分失败' });
+        }
+    })
+})
 export default router
