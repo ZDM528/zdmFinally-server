@@ -2,6 +2,7 @@ import express from 'express';
 import { connection } from '../index';
 import xlsx from 'node-xlsx';
 import fs from 'fs';
+import path from 'path';
 
 let router = express.Router();
 
@@ -31,11 +32,14 @@ router.get('/getWareList', (req, res) => {
 })
 
 router.get('/downloadData', (req, res) => {
-    fs.readdir("./dataExcel", function (err, files) {
+    fs.readdir("./frontend/dataExcel", function (err, files) {
         files.forEach(file => {
-            console.log(file);
+            if (req.query.id === parseInt(file.substring(0, 1))) {
+                let sheetList = xlsx.parse(path.join(__dirname + "\\dataExcel", file));
+                let buffer = xlsx.build([{ name: "mySheetName", data: sheetList[0].data }])
+                res.send({ data: buffer });
+            }
         })
-
     })
 })
 export default router
