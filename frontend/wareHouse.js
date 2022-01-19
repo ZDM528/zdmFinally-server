@@ -26,7 +26,6 @@ router.get('/getWareList', (req, res) => {
                 return item.dataSort === req.query.dataSort && item.access === req.query.access
             })
         }
-        console.log(result);
         res.send({ data: result });
     })
 })
@@ -34,7 +33,7 @@ router.get('/getWareList', (req, res) => {
 router.get('/downloadData', (req, res) => {
     fs.readdir("./frontend/dataExcel", function (err, files) {
         files.forEach(file => {
-            if (req.query.id === parseInt(file.substring(0, 1))) {
+            if (req.query.id == parseInt(file.substring(0, file.length - 5))) {
                 let sheetList = xlsx.parse(path.join(__dirname + "\\dataExcel", file));
                 let buffer = xlsx.build([{ name: "mySheetName", data: sheetList[0].data }])
                 res.send({ data: buffer });

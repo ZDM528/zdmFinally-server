@@ -10,7 +10,7 @@ router.post('/beVip', (req, res) => {
         const { username, id } = req.body;
         resData.some(item => {
             if (item.username == username && item.id == id) {
-                let sql1 = `update frontendUser set isVip='true' where id=${id}`;
+                let sql1 = `update frontendUser set isVip='yes' where id=${id}`;
                 connection.query(sql1, (err, data) => {
                     if (!err) {
                         res.send({ code: 200, messgae: '成为vip会员' });

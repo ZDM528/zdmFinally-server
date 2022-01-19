@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
             }
         }) 
         if (!result) {
-            let sql1 = `Insert into frontendUser(username,password,isVip) Values('${username}','${password}','false')`
+            let sql1 = `Insert into frontendUser(username,password,isVip) Values('${username}','${password}','no')`
             connection.query(sql1, (err, data) => {
                 if (!err)
                     res.send({ code: 200, messgae: '注册成功' });
