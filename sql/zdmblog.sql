@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2022-01-19 23:47:49
+Date: 2022-01-20 11:52:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,11 +26,16 @@ CREATE TABLE `communitylist` (
   `type` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of communitylist
 -- ----------------------------
+INSERT INTO `communitylist` VALUES ('lm', '地区的工业总产值和GDP关系', '看到有的地区工业总产值比GDP大好几倍，这种情况怎么解释呢，想构造一个工业总产值/GDP的公式，但是不知道该怎么解释它，有对应的参考文献吗？', '问题互助', '1');
+INSERT INTO `communitylist` VALUES ('蓝色天空', '碳转换评估', '哪里可以找到碳转换评估的相关资料呀', '资料分享', '2');
+INSERT INTO `communitylist` VALUES ('姜城', '求地级市驻地点图SHP', '找到的是零几年的那一版，很多城市匹配不上。不知道有没有新版的地级市驻地点图SHP。或者求告知怎么在旧版基础上能更正，本人技术有限，盼大神回复', '资料分享', '3');
+INSERT INTO `communitylist` VALUES ('染墨清晨', '全要素生产率ACF测算方法', '有农村固定收益统计年鉴不？', '问题互助', '4');
+INSERT INTO `communitylist` VALUES ('hhhhaa', '数据测试有哪些方法', '数据测试有哪些方法', '问题互助', '5');
 
 -- ----------------------------
 -- Table structure for datalist
