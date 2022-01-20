@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2022-01-20 11:52:41
+Date: 2022-01-20 19:51:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -114,6 +114,23 @@ INSERT INTO `frontenduser` VALUES ('45', '45', '4', 'no', '0');
 INSERT INTO `frontenduser` VALUES ('11', '11', '5', 'no', '0');
 INSERT INTO `frontenduser` VALUES ('b', 'b', '14', 'no', '0');
 INSERT INTO `frontenduser` VALUES ('3', '3', '15', 'yes', '0');
+
+-- ----------------------------
+-- Table structure for supplydata
+-- ----------------------------
+DROP TABLE IF EXISTS `supplydata`;
+CREATE TABLE `supplydata` (
+  `title` varchar(255) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of supplydata
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user

@@ -7,6 +7,7 @@ import wareHouse from './frontend/wareHouse'
 import upload from './upload';
 import beVip from './frontend/beVip'
 import community from './frontend/community'
+import projectSupply from './frontend/projectSupply'
 
 const app = express();
 const cors = require('cors');
@@ -34,6 +35,7 @@ app.use(beVip)
 app.use(wareHouse)
 app.use(upload);
 app.use(community)
+app.use(projectSupply)
 
 app.use(function (req, res) {
     res.send('404 not found');

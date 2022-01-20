@@ -8,11 +8,11 @@ router.post('/getCommunityData', (req, res) => {
     let result = [];
     connection.query(sql, (err, data) => {
         const resData = JSON.parse(JSON.stringify(data));
-        if (req.query.type === '全部内容') {
+        if (req.body.type === '全部内容') {
             result = resData
         } else {
             result = resData.filter(item => {
-                return item.type === req.query.type
+                return item.type === req.body.type
             })
         }
         res.send({ data: result });
