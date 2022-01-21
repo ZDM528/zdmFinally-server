@@ -12,18 +12,20 @@ router.get('/getWareList', (req, res) => {
         const resData = JSON.parse(JSON.stringify(data));
         let result = [];
         if (req.query.access === '不限' && req.query.dataSort === "不限") {
-            result = resData
+            result = resData.filter(item => {
+                return item.isCheck == "yes"
+            })
         } else if (req.query.dataSort === "不限") {
             result = resData.filter(item => {
-                return item.access === req.query.access
+                return item.access === req.query.access && item.isCheck == "yes"
             })
         } else if (req.query.access === '不限') {
             result = resData.filter(item => {
-                return item.dataSort === req.query.dataSort
+                return item.dataSort === req.query.dataSort && item.isCheck == "yes"
             })
         } else {
             result = resData.filter(item => {
-                return item.dataSort === req.query.dataSort && item.access === req.query.access
+                return item.dataSort === req.query.dataSort && item.access === req.query.access && item.isCheck == "yes"
             })
         }
         res.send({ data: result });

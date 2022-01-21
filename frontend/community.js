@@ -12,7 +12,7 @@ router.post('/getCommunityData', (req, res) => {
             result = resData
         } else {
             result = resData.filter(item => {
-                return item.type === req.body.type
+                return item.type === req.body.type 
             })
         }
         res.send({ data: result });

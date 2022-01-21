@@ -8,28 +8,43 @@ import path from 'path'
 let router = express.Router();
 
 router.post('/supplyProjectData', (req, res) => {
-    let sql = `Insert into supplyData(name,phone,title,detail,type.userId) Values('${name}','${phone}','${title}','${detail}','${type}','${userId}')`
+    const { name, phone, title, detail, type, userId } = req.body
+    let sql = `Insert into needdata(name,phone,title,detail,type,userId) Values('${name}','${phone}','${title}','${detail}','${type}','${userId}')`
     connection.query(sql, (err, data) => {
         if (!err) {
-            res.send({ code: 200, message: '发布成功' });
+            res.send({ code: 200, message: '发布需求成功' });
         }
     })
 })
 
-router.post('/addProjectData', (req, res) => {
+router.post('/addUploadFile', (req, res) => {
     let form = new multiparty.Form()
     form.uploadDir = path.resolve(__dirname, '..')
-    form.parse(req, function (err, fields, files) {
-        if (err) throw err
-        console.log(files.file[0].path);
-        const fileName = files.file[0].originalFilename
-        const newPath = form.uploadDir + '\\frontend' + '\\uploadExcel' + '\\' + fileName
-        fs.renameSync(files.file[0].path, newPath)
-        res.send({
-            code: 200,
-            name: fileName,
-            message: '发布供给成功'
+    fs.readdir("./frontend/dataExcel", function (err, files) {
+        let length = files.length;
+        form.parse(req, function (err, fields, files) {
+            if (err) throw err
+            const fileName = files.file[0].originalFilename
+            let endingName = fileName.substring(fileName.length - 4, fileName.length)
+            const newPath = form.uploadDir + '\\frontend' + '\\dataExcel' + '\\' + `${length + 1}.${endingName}`
+            fs.renameSync(files.file[0].path, newPath)
+            res.send({
+                code: 200,
+                message: '发布供给成功'
+            })
         })
+    })
+})
+
+router.post('/addProjectData', (req, res) => {
+    const { info, name, dataSort, userId } = req.body;
+    let sql = `Insert into datalist(name,info,access,score,isCheck,dataSort,userId) Values('${name}','${info}','免费','0','no','${dataSort}','${userId}')`
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send({ code: 200, message: '发布供给成功' });
+        } else {
+            res.send({ code: 403, message: '发布供给失败！' });
+        }
     })
 })
 
