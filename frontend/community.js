@@ -8,14 +8,47 @@ router.post('/getCommunityData', (req, res) => {
     let result = [];
     connection.query(sql, (err, data) => {
         const resData = JSON.parse(JSON.stringify(data));
-        if (req.body.type === '全部内容') {
-            result = resData
-        } else {
-            result = resData.filter(item => {
-                return item.type === req.body.type 
+        for (let i = 0; i < resData.length; i++) {
+            let id = resData[i].id;
+            let sql1 = `select * from commentlist where id=${id}`;
+            connection.query(sql1, (err, data) => {
+                const resData1 = JSON.parse(JSON.stringify(data));
+                let obj = {};
+                for (let j = 0; j < resData1.length; j++) {
+                    let username = resData1[j].username
+                    if (!obj[username]) {
+                        obj[username] = []
+                        obj[username].push(resData1[j].comment);
+                    } else {
+                        obj[username].push(resData1[j].comment);
+                    }
+                }
+                resData[i].comment = obj;
+                if (i == resData.length - 1) {
+                    if (req.body.type == '全部内容') {
+                        result = resData
+                        res.send({ data: result });
+                    } else {
+                        result = resData.filter(item => {
+                            return item.type === req.body.type
+                        })
+                        res.send({ data: result });
+                    }
+                }
             })
         }
-        res.send({ data: result });
+    })
+})
+
+router.post('/addCommunityComment', (req, res) => {
+    const { id, comment, username } = req.body;
+    let sql = `Insert into commentlist(id,comment,username) Values('${id}','${comment}','${username}')`;
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send({ code: 200, message: "添加评论成功" })
+        } else {
+            res.send({ code: 403, message: "添加评论失败" })
+        }
     })
 })
 
