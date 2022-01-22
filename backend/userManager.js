@@ -30,7 +30,7 @@ router.post("/deleteUser", (req, res) => {
 
 router.post("/updateUser", (req, res) => {
     const { id, username, password, score } = req.body;
-    let sql = `update frontendUser set username='${username}' ,password='${password}',score='${score}' where id=${id}`;
+    let sql = `update frontenduser set username='${username}' ,password='${password}',score='${score}' where id=${id}`;
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: '更新用户数据成功' })
