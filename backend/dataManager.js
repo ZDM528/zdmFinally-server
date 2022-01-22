@@ -53,18 +53,26 @@ router.post('/updateData', (req, res) => {
                 connection.query(sql2, (err, data) => {
                     if (err) { console.log(err) }
                 })
+                let sql = `update frontenduser set name='${name}' ,access='${access}',info='${info}',dataSort='${dataSort}',score='${score}',isCheck='${isCheck}' where id=${id}`;
+                connection.query(sql, (err, data) => {
+                    if (!err) {
+                        res.send({ code: 200, message: '更新数据成功' })
+                    } else {
+                        res.send({ code: 403, message: '更新数据失败' })
+                    }
+                })
+            }
+        })
+    } else {
+        let sql = `update frontenduser set name='${name}' ,access='${access}',info='${info}',dataSort='${dataSort}',score='${score}',isCheck='${isCheck}' where id=${id}`;
+        connection.query(sql, (err, data) => {
+            if (!err) {
+                res.send({ code: 200, message: '更新数据成功' })
+            } else {
+                res.send({ code: 403, message: '更新数据失败' })
             }
         })
     }
-    let sql = `update frontenduser set name='${name}' ,access='${access}',info='${info}',dataSort='${dataSort}',score='${score}',isCheck='${isCheck}' where id=${id}`;
-    connection.query(sql, (err, data) => {
-        if (!err) {
-            res.send({ code: 200, message: '更新数据成功' })
-        } else {
-            res.send({ code: 403, message: '更新数据失败' })
-        }
-
-    })
 })
 
 //下载接口跟前台页面的下载接口一样 /downloadData 传id get请求
