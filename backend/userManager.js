@@ -18,7 +18,7 @@ router.get('/getUser', (req, res) => {
 
 router.post("/deleteUser", (req, res) => {
     const { id } = req.body;
-    let sql = `delete frontenduser where  id=${id}`;
+    let sql = `delete from frontenduser where  id=${id}`;
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: '删除用户成功' })

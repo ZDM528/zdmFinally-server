@@ -10,6 +10,7 @@ import community from './frontend/community'
 import projectSupply from './frontend/projectSupply'
 import personRoom from './frontend/personRoom'
 import userManager from './backend/userManager'
+import dataManager from './backend/dataManager'
 
 const app = express();
 const cors = require('cors');
@@ -40,6 +41,7 @@ app.use(community)
 app.use(projectSupply)
 app.use(personRoom)
 app.use(userManager)
+app.use(dataManager)
 
 app.use(function (req, res) {
     res.send('404 not found');

@@ -38,7 +38,7 @@ router.post('/addUploadFile', (req, res) => {
 
 router.post('/addProjectData', (req, res) => {
     const { info, name, dataSort, userId } = req.body;
-    let sql = `Insert into datalist(name,info,access,score,isCheck,dataSort,userId) Values('${name}','${info}','免费','0','no','${dataSort}','${userId}')`
+    let sql = `Insert into datalist(name,info,access,score,isCheck,dataSort,userId) Values('${name}','${info}','免费','0','待审核','${dataSort}','${userId}')`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: '发布供给成功' });
