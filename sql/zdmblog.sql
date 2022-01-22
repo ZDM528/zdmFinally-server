@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2022-01-22 01:22:10
+Date: 2022-01-22 15:17:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,6 +28,7 @@ CREATE TABLE `commentlist` (
 -- ----------------------------
 -- Records of commentlist
 -- ----------------------------
+INSERT INTO `commentlist` VALUES ('25', '微软体育', '11');
 
 -- ----------------------------
 -- Table structure for communitylist
@@ -146,16 +147,17 @@ CREATE TABLE `frontenduser` (
   `isVip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `score` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of frontenduser
 -- ----------------------------
-INSERT INTO `frontenduser` VALUES ('123', '123', '3', 'yes', '0');
+INSERT INTO `frontenduser` VALUES ('11', '123', '3', 'yes', '0');
 INSERT INTO `frontenduser` VALUES ('45', '45', '4', 'no', '0');
 INSERT INTO `frontenduser` VALUES ('11', '11', '5', 'yes', '0');
 INSERT INTO `frontenduser` VALUES ('b', 'b', '14', 'no', '0');
 INSERT INTO `frontenduser` VALUES ('3', '3', '15', 'yes', '0');
+INSERT INTO `frontenduser` VALUES ('77', '77', '16', 'no', '0');
 
 -- ----------------------------
 -- Table structure for needdata
