@@ -41,18 +41,16 @@ router.post("/updateCommunityList", (req, res) => {
 })
 
 router.post("/addCommunityList", (req, res) => {
-    const { id, name, title, content, type } = req.body;
-    let sql = `update needdata set name='${name}' ,content='${content}',type='${type}',title='${title}' where id=${id}`;
+    const { name, title, content, type } = req.body;
+    let sql = `Insert into communitylist(name,title,content,type) Values('${name}','${title}','${content}','${type}')`;
     connection.query(sql, (err, data) => {
         if (!err) {
-            res.send({ code: 200, message: '更新社区数据成功' })
+            res.send({ code: 200, message: '添加社区数据成功' })
         } else {
-            res.send({ code: 403, message: '更新社区数据失败' })
+            res.send({ code: 403, message: '添加社区数据失败' })
         }
     })
 })
-
-
 
 router.get('/getCommentList', (req, res) => {
     let sql = "select * from commentlist";
@@ -62,6 +60,18 @@ router.get('/getCommentList', (req, res) => {
             res.send({ code: 200, data: resData, message: '获取用户评论成功' })
         } else {
             res.send({ code: 403, message: '获取用户评论失败' })
+        }
+    })
+})
+
+router.get('/updateCommentList', (req, res) => {
+    const { comment, username } = req.body;
+    let sql = `update commentlist set comment='${comment}' ,username='${username}' where id=${id}`;
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send({ code: 200, data: resData, message: '更新用户评论成功' })
+        } else {
+            res.send({ code: 403, message: '更新用户评论失败' })
         }
     })
 })
