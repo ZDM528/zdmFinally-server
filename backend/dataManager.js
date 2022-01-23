@@ -39,9 +39,8 @@ router.post('/updateData', (req, res) => {
     if (userId !== -1) {
         let sql0 = `select * from datalist where id=${id} `
         connection.query(sql0, (err, data0) => {
-            const resData = JSON.parse(JSON.stringify(data0));
-            if (resData[0].isCheck == isCheck) {
-                console.log(resData[0].isCheck==isCheck)
+            const resData0 = JSON.parse(JSON.stringify(data0));
+            if (resData0[0].isCheck == isCheck) {
                 let sql = `update datalist set name='${name}' ,access='${access}',info='${info}',dataSort='${dataSort}',score='${score}',isCheck='${isCheck}' where id=${id}`;
                 connection.query(sql, (err, data) => {
                     if (!err) {

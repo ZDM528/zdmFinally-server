@@ -25,4 +25,17 @@ router.post('/login', (req, res) => {
     })
 })
 
+router.post('/getScore', (req, res) => {
+    const { id } = req.body
+    let sql = `select * from frontendUser where id=${id}`;
+    connection.query(sql, (err, data) => {
+        const resData = JSON.parse(JSON.stringify(data));
+        if (!err) {
+            res.send({ code: 200, messgae: '获取用户积分成功', data: resData[0].score });
+        } else {
+            res.send({ code: 403, messgae: '获取用户积分失败' });
+        }
+    })
+})
+
 export default router
