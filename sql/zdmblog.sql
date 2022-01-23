@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2022-01-22 18:58:21
+Date: 2022-01-23 12:50:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,6 +29,12 @@ CREATE TABLE `commentlist` (
 -- Records of commentlist
 -- ----------------------------
 INSERT INTO `commentlist` VALUES ('25', '微软体育', '11');
+INSERT INTO `commentlist` VALUES ('26', 'wert', '11');
+INSERT INTO `commentlist` VALUES ('26', 'df', '11');
+INSERT INTO `commentlist` VALUES ('27', 'sf', '11');
+INSERT INTO `commentlist` VALUES ('26', 'dsf', '11');
+INSERT INTO `commentlist` VALUES ('26', 'sf', '11');
+INSERT INTO `commentlist` VALUES ('27', 'sdff', '33');
 
 -- ----------------------------
 -- Table structure for communitylist
@@ -41,7 +47,7 @@ CREATE TABLE `communitylist` (
   `type` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of communitylist
@@ -69,6 +75,8 @@ INSERT INTO `communitylist` VALUES ('11', '456', '78iuytre', '资料分享', '22
 INSERT INTO `communitylist` VALUES ('11', 'wer', 'erg', '问题互助', '23');
 INSERT INTO `communitylist` VALUES ('11', '１１１１１１１１１１', '１１１１１１１１１１１１１１', '资料分享', '24');
 INSERT INTO `communitylist` VALUES ('11', '问', 'w', '资料分享', '25');
+INSERT INTO `communitylist` VALUES ('11', '66', '66', '资料分享', '26');
+INSERT INTO `communitylist` VALUES ('11', 'dd', 'dd', '问题互助', '27');
 
 -- ----------------------------
 -- Table structure for datalist
@@ -84,14 +92,12 @@ CREATE TABLE `datalist` (
   `isCheck` varchar(255) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of datalist
 -- ----------------------------
-INSERT INTO `datalist` VALUES ('2002-2019年地级市人均消费与支出数据', '免费', '文献质量评估对于论文研究有着巨大的作用，能够有效帮助相关研究人员评判一个研究内容质量的好坏。皮皮侠此次向大家分享一份文献质量评估材料，有需要的朋友不要错过！', '企业数据', '1', '0', '已审核', '-1');
-INSERT INTO `datalist` VALUES ('0372CSSCI投稿邮箱', '免费', '包括CSSCI(2019-2020)收录来源期刊目录568种，扩展版214种', '企业数据', '2', '0', '已审核', '-1');
-INSERT INTO `datalist` VALUES ('549 数字经济大全', '会员免费', '一、数字经济数据(2009-2019)\r\n二、数字经济发展指标体系和测算(2011-2020)\r\n三、地级市数字经济数据(2011-2019)\r\n四、数字经济发展指数(2011-2020)', '企业数据', '3', '2', '已审核', '-1');
+INSERT INTO `datalist` VALUES ('549 数字经济大全', '免费', '一、数字经济数据(2009-2019)\n二、数字经济发展指标体系和测算(2011-2020)\n三、地级市数字经济数据(2011-2019', '企业数据', '3', '11', '待审核', '-1');
 INSERT INTO `datalist` VALUES ('546 投资数据集', '会员免费', '中国对外投资全球跟踪数据', '地理数据', '4', '2', '已审核', '-1');
 INSERT INTO `datalist` VALUES ('546 投资数据集', '会员免费', '中国对外投资全球跟踪数据', '学习资料', '5', '2', '已审核', '-1');
 INSERT INTO `datalist` VALUES ('0063 全国写字楼信息', '免费', '全国写字楼信息，数字经济发展指数(2011-2020)', '地理数据', '6', '0', '已审核', '-1');
@@ -127,15 +133,12 @@ INSERT INTO `datalist` VALUES ('0490全网最新！31个省2010-2021统计年鉴
 INSERT INTO `datalist` VALUES ('540 科技统计年鉴、高技术统计年鉴', '会员免费', '1991-2021(中国科技统计年鉴)\r\n1995-2021(中国高技术产业统计年鉴)', '企业数据', '36', '3', '已审核', '-1');
 INSERT INTO `datalist` VALUES ('379 省、市、县地形起伏度数据', '会员免费', '中国省、市县级地形起伏度数据', '企业数据', '37', '2', '已审核', '-1');
 INSERT INTO `datalist` VALUES ('0069 高德人口迁移数据&LandScan全球人口数据', '会员免费', '高德地图上的人口迁徙数据', '企业数据', '38', '2', '已审核', '-1');
-INSERT INTO `datalist` VALUES ('23', '免费', '34', '地理数据', '40', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('1', '免费', '1', '地理数据', '41', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('2', '免费', '2', '地理数据', '42', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('2', '免费', '3', '企业数据', '43', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('e', '免费', 'e', '企业数据', '44', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('11', '免费', '11', '企业数据', '45', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('23', '免费', '3', '企业数据', '46', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('cesium供给', '免费', '234567', '地理数据', '47', '0', '待审核', '5');
-INSERT INTO `datalist` VALUES ('33', '免费', '33', '学习资料', '48', '0', '待审核', '17');
+INSERT INTO `datalist` VALUES ('2', '免费', '2', '地理数据', '42', '0', '已审核', '5');
+INSERT INTO `datalist` VALUES ('2', '免费', '3', '企业数据', '43', '0', '已审核', '5');
+INSERT INTO `datalist` VALUES ('e', '免费', 'e', '企业数据', '44', '0', '已审核', '5');
+INSERT INTO `datalist` VALUES ('11', '会员免费', '11', '企业数据', '45', '2', '已审核', '5');
+INSERT INTO `datalist` VALUES ('23', '免费', '3', '企业数据', '46', '0', '已审核', '5');
+INSERT INTO `datalist` VALUES ('丹敏测试', '免费', '234', '企业数据', '50', '0', '待审核', '5');
 
 -- ----------------------------
 -- Table structure for frontenduser
@@ -148,38 +151,38 @@ CREATE TABLE `frontenduser` (
   `isVip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `score` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of frontenduser
 -- ----------------------------
-INSERT INTO `frontenduser` VALUES ('11', '123', '3', 'yes', '0');
-INSERT INTO `frontenduser` VALUES ('45', '45', '4', 'no', '0');
-INSERT INTO `frontenduser` VALUES ('11', '11', '5', 'yes', '0');
-INSERT INTO `frontenduser` VALUES ('b', 'b', '14', 'no', '0');
+INSERT INTO `frontenduser` VALUES ('哈哈哈', '77', '3', 'yes', '77');
+INSERT INTO `frontenduser` VALUES ('11', '11', '5', 'yes', '1');
 INSERT INTO `frontenduser` VALUES ('3', '3', '15', 'yes', '0');
-INSERT INTO `frontenduser` VALUES ('77', '77', '16', 'no', '0');
-INSERT INTO `frontenduser` VALUES ('dd', 'dd', '17', 'no', '0');
+INSERT INTO `frontenduser` VALUES ('00', '00', '18', 'yes', '0');
 
 -- ----------------------------
 -- Table structure for needdata
 -- ----------------------------
 DROP TABLE IF EXISTS `needdata`;
 CREATE TABLE `needdata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   `detail` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of needdata
 -- ----------------------------
-INSERT INTO `needdata` VALUES ('121', '5', '1', '数据爬虫', '13411323232', '1');
-INSERT INTO `needdata` VALUES ('其４５', '5', '同样', '求数据', '13212323232', '荣他');
-INSERT INTO `needdata` VALUES ('23', '5', '3', '求数据', '13611472142', '3');
+INSERT INTO `needdata` VALUES ('1', '121', '5', '1', '数据爬虫', '13411323232', '1');
+INSERT INTO `needdata` VALUES ('2', '其４５', '5', '同样', '求数据', '13212323232', '荣他');
+INSERT INTO `needdata` VALUES ('3', '23', '5', '3', '求数据', '13611472142', '3');
+INSERT INTO `needdata` VALUES ('4', '66', '3', '66', '模型/建模', '13422343234', '66');
 
 -- ----------------------------
 -- Table structure for user
