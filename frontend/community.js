@@ -10,7 +10,7 @@ router.post('/getCommunityData', (req, res) => {
         const resData = JSON.parse(JSON.stringify(data));
         for (let i = 0; i < resData.length; i++) {
             let id = resData[i].id;
-            let sql1 = `select * from commentlist where id=${id}`;
+            let sql1 = `select * from commentlist where commentCardId=${id}`;
             connection.query(sql1, (err, data) => {
                 const resData1 = JSON.parse(JSON.stringify(data));
                 let obj = {};
@@ -41,8 +41,8 @@ router.post('/getCommunityData', (req, res) => {
 })
 
 router.post('/addCommunityComment', (req, res) => {
-    const { id, comment, username } = req.body;
-    let sql = `Insert into commentlist(id,comment,username) Values('${id}','${comment}','${username}')`;
+    const { commentCardId, comment, username } = req.body;
+    let sql = `Insert into commentlist(commentCardId,comment,username) Values('${commentCardId}','${comment}','${username}')`;
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: "添加评论成功" })

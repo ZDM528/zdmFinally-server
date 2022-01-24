@@ -5,9 +5,15 @@ import { connection } from '../index';
 let router = express.Router();
 
 router.get('/getCommunityList', (req, res) => {
-    let sql = "select * from communitylist";
+    const { type } = req.query;
+    let sql;
+    if (type == "全部内容") {
+        sql = `select * from communitylist`;
+    } else {
+        sql = `select * from communitylist where type='${type}'`;
+    }
     connection.query(sql, (err, data) => {
-        const resData = JSON.parse(JSON.stringify(data)); s
+        const resData = JSON.parse(JSON.stringify(data));
         if (!err) {
             res.send({ code: 200, data: resData, message: '获取社区数据成功' })
         } else {
@@ -30,7 +36,7 @@ router.post('/deleteCommunityList', (req, res) => {
 
 router.post("/updateCommunityList", (req, res) => {
     const { id, name, title, content, type } = req.body;
-    let sql = `update needdata set name='${name}' ,content='${content}',type='${type}',title='${title}' where id=${id}`;
+    let sql = `update communitylist set name='${name}' ,content='${content}',type='${type}',title='${title}' where id=${id}`;
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: '更新社区数据成功' })
@@ -55,7 +61,7 @@ router.post("/addCommunityList", (req, res) => {
 router.get('/getCommentList', (req, res) => {
     let sql = "select * from commentlist";
     connection.query(sql, (err, data) => {
-        const resData = JSON.parse(JSON.stringify(data)); s
+        const resData = JSON.parse(JSON.stringify(data)); 
         if (!err) {
             res.send({ code: 200, data: resData, message: '获取用户评论成功' })
         } else {
@@ -65,11 +71,11 @@ router.get('/getCommentList', (req, res) => {
 })
 
 router.get('/updateCommentList', (req, res) => {
-    const { comment, username } = req.body;
+    const { id, comment, username } = req.query;
     let sql = `update commentlist set comment='${comment}' ,username='${username}' where id=${id}`;
     connection.query(sql, (err, data) => {
         if (!err) {
-            res.send({ code: 200, data: resData, message: '更新用户评论成功' })
+            res.send({ code: 200, message: '更新用户评论成功' })
         } else {
             res.send({ code: 403, message: '更新用户评论失败' })
         }

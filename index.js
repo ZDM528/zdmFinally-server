@@ -4,7 +4,7 @@ import user from './backend/user';
 import login from './frontend/login'
 import register from './frontend/register'
 import wareHouse from './frontend/wareHouse'
-import upload from './upload';
+import upload from './backend/upload';
 import beVip from './frontend/beVip'
 import community from './frontend/community'
 import projectSupply from './frontend/projectSupply'

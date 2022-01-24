@@ -44,15 +44,4 @@ router.get('/getPersonData', (req, res) => {
     })
 })
 
-router.get('/downloadPersonData', (req, res) => {
-    fs.readdir("./frontend/dataExcel", function (err, files) {
-        files.forEach(file => {
-            if (parseInt(file.substring(0, file.length - 5)) == parseInt(req.query.id)) {
-                let sheetList = xlsx.parse(path.join(__dirname + "\\dataExcel", file));
-                let buffer = xlsx.build([{ name: "mySheetName", data: sheetList[0].data }])
-                res.send({ data: buffer });
-            }
-        })
-    })
-})
 export default router

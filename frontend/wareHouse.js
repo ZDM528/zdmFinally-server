@@ -38,7 +38,7 @@ router.get('/downloadData', (req, res) => {
             if (req.query.id == parseInt(file.substring(0, file.length - 5))) {
                 let sheetList = xlsx.parse(path.join(__dirname + "\\dataExcel", file));
                 let buffer = xlsx.build([{ name: "mySheetName", data: sheetList[0].data }])
-                res.send({ data: buffer });
+                res.send({ data: buffer, name: file.substring(0, file.length - 5) });
             }
         })
     })
