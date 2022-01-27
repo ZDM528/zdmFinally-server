@@ -1,8 +1,5 @@
 import express from 'express';
 import { connection } from '../index';
-import xlsx from 'node-xlsx';
-import fs from 'fs';
-import path from 'path';
 let router = express.Router();
 
 router.get('/getPersonData', (req, res) => {

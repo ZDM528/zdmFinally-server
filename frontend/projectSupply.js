@@ -7,9 +7,9 @@ import path from 'path'
 
 let router = express.Router();
 
-router.post('/supplyProjectData', (req, res) => {
+router.post('/addNeed', (req, res) => {
     const { name, phone, title, detail, type, userId } = req.body
-    let sql = `Insert into needdata(name,phone,title,detail,type,userId) Values('${name}','${phone}','${title}','${detail}','${type}','${userId}')`
+    let sql = `Insert into needdata(name,phone,title,detail,type,userId,hasSupply) Values('${name}','${phone}','${title}','${detail}','${type}','${userId}','否')`
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: '发布需求成功' });

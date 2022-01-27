@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2022-01-24 15:49:54
+Date: 2022-01-27 17:58:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,14 +25,13 @@ CREATE TABLE `commentlist` (
   `username` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of commentlist
 -- ----------------------------
-INSERT INTO `commentlist` VALUES ('3', '评论测试1', 'danmin', '1');
-INSERT INTO `commentlist` VALUES ('1', '评论测试2', 'danmin', '2');
 INSERT INTO `commentlist` VALUES ('3', '新用户评论测试', 'ceshi', '5');
+INSERT INTO `commentlist` VALUES ('4', 'e', 'ceshi', '6');
 
 -- ----------------------------
 -- Table structure for communitylist
@@ -69,17 +68,18 @@ CREATE TABLE `datalist` (
   `userId` int(11) DEFAULT NULL,
   `isCheck` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of datalist
 -- ----------------------------
-INSERT INTO `datalist` VALUES ('529中国省市县灯光数据合集', '免费', '三种非辐射定标的夜间灯光影像。三种全年平均影像分别是：无云观测频数影像、平均灯光影像和稳定灯光影像。稳定灯光影像是标定夜间平均灯光强度的年度栅格影像，该影像包括城市、乡镇', '企业数据', '1', '0', '-1', '已审核');
-INSERT INTO `datalist` VALUES ('558 财政数据专题', '会员免费', '1）30省地方政府债务面板数据\r\n（2）地级市政府财政透明度数据\r\n（3）各地财政支出和城乡收入差距\r\n（4）各省地级市政府性债务数据', '地理数据', '2', '2', '-1', '已审核');
-INSERT INTO `datalist` VALUES ('30托宾Q数据', '免费', '经济', '企业数据', '3', '0', '-1', '已审核');
-INSERT INTO `datalist` VALUES ('61 Matlab模式分类手册和代码', '会员免费', '代码', '企业数据', '4', '4', '-1', '已审核');
-INSERT INTO `datalist` VALUES ('测试下载数据', '免费', '测试下载数据', '学习资料', '5', '0', '2', '已审核');
-INSERT INTO `datalist` VALUES ('发布数据获得积分', '免费', '发布数据获得积分', '企业数据', '6', '0', '3', '已审核');
+INSERT INTO `datalist` VALUES ('529中国省市县灯光数据合集', '免费', '三种非辐射定标的夜间灯光影像。三种全年平均影像分别是：无云观测频数影像、平均灯光影像和稳定灯光影像。稳定灯光影像是标定夜间平均灯光强度的年度栅格影像，该影像包括城市、乡镇', '企业数据', '1', '0', '-1', '审核通过');
+INSERT INTO `datalist` VALUES ('558 财政数据专题', '会员免费', '1）30省地方政府债务面板数据\r\n（2）地级市政府财政透明度数据\r\n（3）各地财政支出和城乡收入差距\r\n（4）各省地级市政府性债务数据', '地理数据', '2', '2', '-1', '审核通过');
+INSERT INTO `datalist` VALUES ('30托宾Q数据', '免费', '经济', '企业数据', '3', '0', '-1', '审核通过');
+INSERT INTO `datalist` VALUES ('61 Matlab模式分类手册和代码', '会员免费', '代码', '企业数据', '4', '4', '-1', '审核通过');
+INSERT INTO `datalist` VALUES ('供给测试', '免费', '供给测试', '地理数据', '7', '0', '3', '审核通过');
+INSERT INTO `datalist` VALUES ('供给测试3', '免费', '供给测试3', '学习资料', '10', '0', '3', '待审核');
+INSERT INTO `datalist` VALUES ('供给测试2', '免费', '供给测试2', '学习资料', '11', '0', '3', '审核通过');
 
 -- ----------------------------
 -- Table structure for frontenduser
@@ -99,7 +99,7 @@ CREATE TABLE `frontenduser` (
 -- ----------------------------
 INSERT INTO `frontenduser` VALUES ('danmin', '11', '1', 'no', '0');
 INSERT INTO `frontenduser` VALUES ('zhaoteng', 'zhaoteng', '2', 'no', '2');
-INSERT INTO `frontenduser` VALUES ('ceshi', 'ceshi', '3', 'yes', '0');
+INSERT INTO `frontenduser` VALUES ('ceshi', 'ceshi', '3', 'yes', '4');
 
 -- ----------------------------
 -- Table structure for needdata
@@ -113,14 +113,16 @@ CREATE TABLE `needdata` (
   `type` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `hasSupply` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of needdata
 -- ----------------------------
-INSERT INTO `needdata` VALUES ('1', '测试1', '1', '测试1', '求数据', '13411534343', 'danmi');
-INSERT INTO `needdata` VALUES ('2', '发布需求测试', '3', '发布需求测试', '求数据', '13433434352', '发布需求');
+INSERT INTO `needdata` VALUES ('1', '测试1', '1', '测试1', '求数据', '13411534343', 'danmi', '是');
+INSERT INTO `needdata` VALUES ('2', '发布需求测试', '3', '发布需求测试', '求数据', '13433434352', '发布需求', '否');
+INSERT INTO `needdata` VALUES ('3', '22222222222', '3', '453', '数据爬虫', '13433452313', '111', '是');
 
 -- ----------------------------
 -- Table structure for user

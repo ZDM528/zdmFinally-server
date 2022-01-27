@@ -13,19 +13,19 @@ router.get('/getWareList', (req, res) => {
         let result = [];
         if (req.query.access === '不限' && req.query.dataSort === "不限") {
             result = resData.filter(item => {
-                return item.isCheck == "已审核"
+                return item.isCheck == "审核通过"
             })
         } else if (req.query.dataSort === "不限") {
             result = resData.filter(item => {
-                return item.access === req.query.access && item.isCheck == "已审核"
+                return item.access === req.query.access && item.isCheck == "审核通过"
             })
         } else if (req.query.access === '不限') {
             result = resData.filter(item => {
-                return item.dataSort === req.query.dataSort && item.isCheck == "已审核"
+                return item.dataSort === req.query.dataSort && item.isCheck == "审核通过"
             })
         } else {
             result = resData.filter(item => {
-                return item.dataSort === req.query.dataSort && item.access === req.query.access && item.isCheck == "已审核"
+                return item.dataSort === req.query.dataSort && item.access === req.query.access && item.isCheck == "审核通过"
             })
         }
         res.send({ data: result });

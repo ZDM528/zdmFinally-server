@@ -29,8 +29,8 @@ router.post('/deleteNeed', (req, res) => {
 })
 
 router.post("/updateNeed", (req, res) => {
-    const { id, title, detail, type, phone, name } = req.body;
-    let sql = `update needdata set name='${name}' ,phone='${phone}',type='${type}',detail='${detail}',title='${title}' where id=${id}`;
+    const { id, title, detail, type, phone, name, hasSupply } = req.body;
+    let sql = `update needdata set name='${name}',phone='${phone}',type='${type}',detail='${detail}',title='${title}' ,hasSupply='${hasSupply}'where id=${id}`;
     connection.query(sql, (err, data) => {
         if (!err) {
             res.send({ code: 200, message: '更新需求数据成功' })

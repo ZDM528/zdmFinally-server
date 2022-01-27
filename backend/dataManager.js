@@ -37,7 +37,7 @@ router.post('/deleteData', (req, res) => {
 router.post('/updateData', (req, res) => {
     const { id, name, access, info, dataSort, score, isCheck, userId } = req.body;
     if (userId !== -1) {
-        let sql0 = `select * from datalist where id=${id} `
+        let sql0 = `select * from datalist where id=${id}`
         connection.query(sql0, (err, data0) => {
             const resData0 = JSON.parse(JSON.stringify(data0));
             if (resData0[0].isCheck == isCheck) {
@@ -52,13 +52,14 @@ router.post('/updateData', (req, res) => {
             }
             else {
                 let sql1 = `select * from frontenduser where id=${userId}`
-                connection.query(sql1, (err, data) => {
-                    const resData = JSON.parse(JSON.stringify(data));
-                    let preScore = parseInt(resData[0].score);
+                connection.query(sql1, (err, data1) => {
+                    const resData1 = JSON.parse(JSON.stringify(data1));
+                    let preScore = parseInt(resData1[0].score);
                     let newScore = preScore;
-                    if (isCheck == "待审核") {
+                    if ((resData0[0].isCheck == "待审核" && isCheck == "审核未通过") || (resData0[0].isCheck == "审核未通过" && isCheck == "待审核")) {
+                    } else if (resData0[0].isCheck == "审核通过") {
                         newScore = Math.max(preScore - 2, 0);
-                    } else if (isCheck == "已审核") {
+                    } else {
                         newScore = preScore + 2;
                     }
                     let sql2 = `update frontenduser set score='${newScore}' where id=${userId}`;
@@ -74,9 +75,9 @@ router.post('/updateData', (req, res) => {
                         }
                     })
                 })
+
             }
         })
-
     } else {
         let sql = `update datalist set name='${name}' ,access='${access}',info='${info}',dataSort='${dataSort}',score='${score}',isCheck='${isCheck}' where id=${id}`;
         connection.query(sql, (err, data) => {
@@ -87,6 +88,18 @@ router.post('/updateData', (req, res) => {
             }
         })
     }
+})
+
+router.post("/addData", (req, res) => {
+    const { name, access, info, dataSort, score } = req.body;
+    let sql = `Insert into datalist(name,access,info,dataSort,score,isCheck,userId) Values('${name}','${access}','${info}','${dataSort}','${score}','审核通过','-1')`;
+    connection.query(sql, (err, data) => {
+        if (!err) {
+            res.send({ code: 200, message: '添加数据成功' })
+        } else {
+            res.send({ code: 403, message: '添加数据失败' })
+        }
+    })
 })
 
 //下载接口跟前台页面的下载接口一样 /downloadData 传id get请求
